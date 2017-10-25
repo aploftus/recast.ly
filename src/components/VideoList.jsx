@@ -1,7 +1,6 @@
 var VideoList = (props) => {
   // get video list entry nodes (rendered!)
-  
-  let renderedVideos = props.videos.map(video => <VideoListEntry/>);
+  let renderedVideos = props.videos.map(video => <VideoListEntry video={video}/>);
 
   return (
     <div className="video-list">
