@@ -8,9 +8,9 @@ class App extends React.Component {
     };
   }
 
-  onVideoClick(event) {
-    console.log('click', event.target);
-    this.setState( {playing: video});
+  onVideoClick(videoObject) {
+    console.log('click', videoObject);
+    this.setState( {playing: videoObject});
   }
   
   render() {
