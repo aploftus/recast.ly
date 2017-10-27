@@ -3,22 +3,37 @@ class App extends React.Component {
     super(props);
     
     this.state = {
-      playing: exampleVideoData[0],
-      videos: exampleVideoData
+      playing: window.exampleVideoData[0],
+      videos: window.exampleVideoData
     };
   }
-
+  
+  componentDidMount() {
+    this.getYouTubeVideos('nic cage'); 
+  }
+  
   onVideoClick(videoObject) {
     console.log('click', videoObject);
     this.setState( {playing: videoObject});
   }
+
+  getYouTubeVideos(query) {
+    var options = {
+      key: this.props.API_KEY,
+      query: query
+    };
+    this.props.searchYouTube(options, (videos) => {
+      this.setState({videos: videos, playing: videos[0]}); 
+    });
+  }
+
   
   render() {
     return (
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search/>
+            <Search handleSearchInputChange={this.getYouTubeVideos.bind(this)}/>
           </div>
         </nav>
         <div className="row">
