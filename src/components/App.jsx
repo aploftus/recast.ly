@@ -9,7 +9,6 @@ class App extends React.Component {
   }
 
   onVideoClick(videoObject) {
-    console.log('click', videoObject);
     this.setState( {playing: videoObject});
   }
   
@@ -26,7 +25,7 @@ class App extends React.Component {
             <VideoPlayer playing={this.state.playing}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.state.videos} onClick={this.onVideoClick.bind(this)}/> 
+            <VideoList videos={this.state.videos} onVideoClick={this.onVideoClick.bind(this)}/> 
           </div>
         </div>
       </div>
