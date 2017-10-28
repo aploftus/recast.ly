@@ -1,10 +1,10 @@
-var VideoList = ({onVideoClick, videos}) => {
+var VideoList = ({handleVideoClick, videos}) => {
   // get video list entry nodes (rendered!)
   // let handleClick = props.onClick;
  
   return (
     <div className="video-list">
-      {videos.map(video => <VideoListEntry video={video} onVideoClick={onVideoClick}/>)}
+      {videos.map(video => <VideoListEntry video={video} handleVideoClick={handleVideoClick}/>)}
     </div>
   );
 };
