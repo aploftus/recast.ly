@@ -14,7 +14,6 @@ var VideoList = ({handleVideoClick, videos}) => {
 // Warnings will be shown in the console when the defined rules are violated
 VideoList.propTypes = {
   videos: React.PropTypes.array.isRequired,
-  onClick: React.PropTypes.function.isRequired
 };
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope.
