@@ -5,7 +5,7 @@ var VideoListEntry = ({video, handleVideoClick}) => (
     </div>
     <div className="media-body">
       <div 
-        className={'video-list-entry-title ' + video.snippet.title}
+        className="video-list-entry-title"
         onClick={() => handleVideoClick(video)}>{video.snippet.title}
       >
       </div>
