@@ -1,20 +1,33 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
-      playing: window.exampleVideoData[0],
-      videos: window.exampleVideoData
+      videos: exampleVideoData,
+      currentVideo: exampleVideoData[0]
     };
   }
-  
+
   componentDidMount() {
-    this.getYouTubeVideos('nic cage'); 
+    this.getYouTubeVideos('nicolas cage');
   }
-  
-  onVideoClick(videoObject) {
-    console.log('click', videoObject);
-    this.setState( {playing: videoObject});
+
+  getYouTubeVideos(query) {
+    var options = {
+      key: this.props.API_KEY,
+      query: query
+    };
+
+    this.props.searchYouTube(options, (videos) =>
+      this.setState({
+        videos: videos,
+        currentVideo: videos[0]
+      })
+    );
+  }
+
+  handleVideoClick(videoObject) {
+    this.setState( {currentVideo: videoObject} );
   }
 
   getYouTubeVideos(query) {
@@ -38,10 +51,10 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer playing={this.state.playing}/>
+            <VideoPlayer currentVideo={this.state.currentVideo}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.state.videos} onClick={this.onVideoClick.bind(this)}/> 
+            <VideoList videos={this.state.videos} handleVideoClick={this.handleVideoClick.bind(this)}/> 
           </div>
         </div>
       </div>
