@@ -29,6 +29,17 @@ class App extends React.Component {
   handleVideoClick(videoObject) {
     this.setState( {currentVideo: videoObject} );
   }
+
+  getYouTubeVideos(query) {
+    var options = {
+      key: this.props.API_KEY,
+      query: query
+    };
+    this.props.searchYouTube(options, (videos) => {
+      this.setState({videos: videos, playing: videos[0]}); 
+    });
+  }
+
   
   render() {
     return (

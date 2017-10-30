@@ -18,5 +18,6 @@ var searchYouTube = ({key, query, max = 5}, callback) => {
       );
     });
 };
+  
 
 window.searchYouTube = searchYouTube;
